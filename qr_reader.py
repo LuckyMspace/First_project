@@ -19,7 +19,7 @@ def read_qrcode_cv2(opencv_image):
 
 def read_qrcode_zbar(opencv_image):
     gray = cv2.cvtColor(opencv_image, cv2.COLOR_BGR2GRAY) # - pyzbar는 1채널 흑백이미지로 사용한다. 넘어온 인자를 그레이 이미지로 convert 해야한다.
-    decoded = pyzbar.decode(gray)  
+    decoded = pyzbar.decode(gray,error_correction = pyzbar.ZBarSymbol.E) # PyZbar에서 사용할 수 있는 가장 높은 오류 수정 수준인 "E"로 설정하는 데 사용
     for d in decoded:
         x, y, w, h = d.rect
         qrcode_data = d.data.decode("utf-8")
@@ -32,10 +32,10 @@ def read_qrcode_zbar(opencv_image):
     cv2.waitKey(0)
     cv2.destroyAllWindows()
     # 설정된 'decoded' 변수는 출력시 인식된 모든 QR코드의 데이터를 나열하기 때문에 리스트형으로 출력된다.
-filepath = "qr_msaischool.png"   # cv2.imread() 메서드는 변수 'filepath'에 할당된 'png'파일을 읽는다.
-cv_image1 = cv2.imread(filepath) 
+    filepath = "qr_msaischool.png"   # cv2.imread() 메서드는 변수 'filepath'에 할당된 'png'파일을 읽는다.
+    cv_image1 = cv2.imread(filepath) 
 # read_qrcode_cv2(cv_image1) 
-read_qrcode_zbar(cv_image1)
+    read_qrcode_zbar(cv_image1)
 # - 정상적으로 QR코드의 데이터와 QR코드의 위치값을 출력한다.
 # - QRimage라는 이름의 이미지파일에 'qr_msaischool.png' 파일의 QR코드를 빨간색 선으로 인식범위가 표시된다.
 
