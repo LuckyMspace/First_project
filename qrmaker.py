@@ -8,11 +8,11 @@ import pyqrcode
 qrcode = pyqrcode.create("https://msaischool.kr/")  # - 'qrcode'변수에 QR코드를 생성하는 명령어를 할당.
 qrcode.svg("qr_msaischool.svg", scale=8)
 qrcode.eps("qr_msaischool.eps", scale=10)
-# - QR코드를 svg문서와 eps 파일로 작성.
+# - QR코드를 svg문서와 eps 파일로 작성하고 저장.
 
 
 qrcode = pyqrcode.create("https://msaischool.kr", mode = "binary", encoding = "utf-8")
 qrcode.png("qr_msaischool.png", scale = 8, module_color = [0, 0, 0, 255], background =[255, 255, 255, 255])
 qrcode.show()
-# - 'qr_msaischool.png' png파일이 정상적으로 생성되고 보여짐.
-# - 크기를 따로 정해주지 않으면 매우 작게나와서 scale메서드로 크기를 조절.
+# - 'qr_msaischool.png' png파일이 정상적으로 생성.
+# - 크기를 따로 정해주지 않으면 매우 작게 나오므로 scale메서드로 크기를 조절.
