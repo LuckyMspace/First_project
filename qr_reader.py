@@ -49,7 +49,7 @@ def read_qrcode_webcam():
             continue
 
         gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-        decoded = pyzbar.decode(gray)
+        decoded = pyzbar.decode(gray,error_correction = pyzbar.ZBarSymbol.E)
         for d in decoded:
             x, y, w, h = d.rect
             qrcode_data = d.data.decode("utf-8")
