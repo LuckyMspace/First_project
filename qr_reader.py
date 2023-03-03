@@ -11,14 +11,14 @@ def read_qrcode_cv2(opencv_image):
 
         lefttop = (int(rect[0][0][0]), int(rect[0][0][1]))
         rightbottom = (int(rect[0][2][0]), int(rect[0][2][1]))
-        cv2.rectangle(opencv_image, lefttop, rightbottom, (0, 0, 255), 5) 
+        cv2.rectangle(opencv_image, lefttop, rightbottom, (0, 0, 255), 5)
         cv2.imshow("QRimage", opencv_image)
-        cv2.waitKey(0)  
-        cv2.destroyAllWindows() 
+        cv2.waitKey(0)
+        cv2.destroyAllWindows()
 
 def read_qrcode_zbar(opencv_image):
     gray = cv2.cvtColor(opencv_image, cv2.COLOR_BGR2GRAY)
-    decoded = pyzbar.decode(gray,error_correction = pyzbar.ZBarSymbol.E) 
+    decoded = pyzbar.decode(gray,error_correction = pyzbar.ZBarSymbol.E)
     for d in decoded:
         x, y, w, h = d.rect
         qrcode_data = d.data.decode("utf-8")
